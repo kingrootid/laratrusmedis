@@ -41,10 +41,6 @@
                                 <button type="submit" class="ibtn">Login</button> <a href="forget16.html">Forget password?</a>
                             </div>
                         </form>
-                        <div class="other-links">
-                            <div class="text">Or login with</div>
-                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
-                        </div>
                         <div class="page-links">
                             <a href="{{ url('auth/register') }}">Register new account</a>
                         </div>

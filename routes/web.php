@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $data = [
+        'title' => env('APP_NAME'),
+        'content' => 'Home Page'
+    ];
+    return view('index', $data);
 });
+Route::get('doctor', [DoctorController::class, 'index']);
 Route::get('/auth/login', [AuthController::class, 'login']);
 Route::get('/auth/register', [AuthController::class, 'register']);
