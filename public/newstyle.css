@@ -1,0 +1,26 @@
+.card-doctor {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+.card-spesialist {
+    display: flex;
+    flex-direction: row;
+}
+.card-spesialist img {
+    width: 200px;
+    height: 200px;
+}
+.card-doctor img {
+    width: 6rem !important;
+    height: 6rem !important;
+}
+@media (max-width: 576px) {
+    .doctor {
+        flex-direction: column;
+        align-content: center;
+    }
+}

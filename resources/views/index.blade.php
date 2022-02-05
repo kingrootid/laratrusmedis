@@ -7,6 +7,7 @@
     </div>
 </div>
 <h4 id="time">{time}</h4>
+<h4>Hi, {{(!is_null($user) ? $user->name : 'Tamu')}}</h4>
 <div class="row">
     <div class="col-10 m-auto">
         <div class="card">
@@ -14,42 +15,22 @@
                 <h4>Specialist</h4>
             </div>
             <div class="card-body">
-                <div class="row">
+                <div class="row doctor">
+                    @foreach($specialist as $s)
                     <div class="col-3">
                         <div class="card">
-                            <div class="card-body text-center d-flex" style="flex-direction: column;">
-                                <img src="https://t4.ftcdn.net/jpg/03/02/68/11/360_F_302681154_9HOWdvGLtCKpfwO5B85yESszG7MfmlUl.jpg" class="img-fluid" alt="">
-                                <p>Dentist</p>
-                            </div>
+                            <a href="{{url('spesialist').'/'.$s->name}}">
+                                <div class="card-body card-doctor">
+                                    <img src="{{ asset('images/specialist').'/'.$s->images }}">
+                                    <p>{{ $s->name }}</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <div class="card-body text-center d-flex" style="flex-direction: column;">
-                                <img src="https://t4.ftcdn.net/jpg/03/02/68/11/360_F_302681154_9HOWdvGLtCKpfwO5B85yESszG7MfmlUl.jpg" class="img-fluid" alt="">
-                                <p>Dentist</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <div class="card-body text-center d-flex" style="flex-direction: column;">
-                                <img src="https://t4.ftcdn.net/jpg/03/02/68/11/360_F_302681154_9HOWdvGLtCKpfwO5B85yESszG7MfmlUl.jpg" class="img-fluid" alt="">
-                                <p>Dentist</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <div class="card-body text-center d-flex" style="flex-direction: column;">
-                                <img src="https://t4.ftcdn.net/jpg/03/02/68/11/360_F_302681154_9HOWdvGLtCKpfwO5B85yESszG7MfmlUl.jpg" class="img-fluid" alt="">
-                                <p>Dentist</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="float-right mr-4">
-                    <a href="{{ url('doctor') }}" class="btn btn-primary">View More</a>
+                    <a href="{{ url('spesialist') }}" class="btn btn-primary">View More</a>
                 </div>
             </div>
         </div>
@@ -59,6 +40,7 @@
 @section('script')
 <script>
     setInterval(function() {
+        moment.locale('id');
         var time = moment().format('MMMM Do YYYY, h:mm:ss a');
         $('#time').html(time);
     }, 1000);

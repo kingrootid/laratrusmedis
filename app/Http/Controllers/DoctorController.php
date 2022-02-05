@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -10,7 +11,9 @@ class DoctorController extends Controller
     {
         $data = [
             'title' => env('APP_NAME'),
-            'content' => 'Doctor Page'
+            'content' => 'Doctor Page',
+            'user' => (!auth()->user() ? null : auth()->user()),
+            'doctor' => Doctor::all(),
         ];
         return view('doctor.index', $data);
     }

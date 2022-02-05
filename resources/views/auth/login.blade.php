@@ -35,7 +35,7 @@
                         <p>Access to the most powerfull tool in the entire design and web industry.</p>
                         <form id="login" method="POST">
                             @csrf
-                            <input class="form-control" type="text" name="username" placeholder="E-mail Address" required>
+                            <input class="form-control" type="text" name="email" placeholder="E-mail Address" required>
                             <input class="form-control" type="password" name="password" placeholder="Password" required>
                             <div class="form-button">
                                 <button type="submit" class="ibtn">Login</button> <a href="forget16.html">Forget password?</a>
@@ -88,14 +88,9 @@
                     }, 200);
                 }
             }).catch(function(error) {
-                console.log(error.response.data);
-                var errorMessage = '';
-                Object.keys(error.response.data.data).map(function(key) {
-                    errorMessage += error.response.data.data[key] + '<br/>'
-                });
                 setTimeout(function() {
                     swal.fire({
-                        html: errorMessage,
+                        html: error.response.data.message,
                         title: 'Something went wrong!',
                         icon: 'error',
                         buttonsStyling: false,

@@ -4,22 +4,23 @@
     <div class="col-10 m-auto">
         <div class="card">
             <div class="card-header">
-                <h4>Doctor</h4>
+                <h4>Spesialist</h4>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
+                            @foreach($spesialist as $s)
                             <div class="col-10 m-auto">
-                                <div class="card" style="display: flex;flex-direction: row;">
-                                    <img src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?size=338&ext=jpg" class="img-thumbnail" style="width: 10rem !important;">
+                                <div class="card card-spesialist">
+                                    <img src="{{ asset('images/specialist').'/'.$s->images }}">
                                     <div class="card-body">
-                                        <h4>Nama Doctor</h4>
-                                        <p>Specialist</p>
-                                        <button class="btn btn-primary">Make Appointment</button>
+                                        <p>{{ $s->name }}</p>
+                                        <a href="{{url('spesialist').'/'.$s->name}}" class="btn btn-primary">Show Doctor</a>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
