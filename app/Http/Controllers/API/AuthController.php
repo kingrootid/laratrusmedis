@@ -27,6 +27,10 @@ class AuthController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
+            'address' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
+            'phone' => 'required',
             'password' => 'required',
             'confirm_password' => 'required|same:password',
         ]);
@@ -39,6 +43,7 @@ class AuthController extends BaseController
         if ($check) {
             return $this->sendError('Email already exists', null);
         } else {
+            $input['role'] = "Pasien";
             $input['password'] = bcrypt($input['password']);
             $user = User::create($input);
             $success['token'] =  $user->createToken('MyAuthApp')->plainTextToken;
